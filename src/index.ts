@@ -67,7 +67,7 @@ class BabelTransformPlugin {
      * 处理所有资源（公共方法）
      */
     private async processAllAssets(compiler: Compiler, compilation: Compilation, assets: Record<string, any>): Promise<void> {
-        const javascriptFiles = Object.keys(assets).filter((filename) => filename.endsWith(".js"));
+        const javascriptFiles = Object.keys(assets).filter((filename) => filename.endsWith(".js") && this.#options.filter?.(filename));
 
         const tasks = javascriptFiles.map(async (filename) => {
             const originalSource = assets[filename].source();
