@@ -71,7 +71,7 @@ class BabelTransformPlugin {
 
         const tasks = javascriptFiles.map(async (filename) => {
             const originalSource = assets[filename].source();
-            const sourceStr = typeof originalSource === "string" ? originalSource : originalSource.toString();
+            const sourceStr: string = typeof originalSource === "string" ? originalSource : originalSource.toString();
 
             const modifiedSource = await this.replaceContent(compiler, sourceStr, filename);
 
