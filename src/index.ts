@@ -1,5 +1,7 @@
+import os from "os";
 import { transformAsync } from "@babel/core";
 import type { Compiler, Compilation } from "webpack";
+import pMap from "./p-map";
 import type { BabelTransformPluginOptions } from "./type";
 
 /**
@@ -71,7 +73,7 @@ class BabelTransformPlugin {
             filename.endsWith(".js") && this.#options.filter ? this.#options.filter?.(filename) : true
         );
 
-        const tasks = javascriptFiles.map(async (filename) => {
+        const process = async (filename: string) => {
             const originalSource = assets[filename].source();
             const sourceStr: string = typeof originalSource === "string" ? originalSource : originalSource.toString();
 
@@ -92,9 +94,9 @@ class BabelTransformPlugin {
                     size: () => modifiedSource.length,
                 };
             }
-        });
+        };
 
-        await Promise.all(tasks);
+        await pMap(javascriptFiles, process, { concurrency: os.cpus().length });
     }
 
     /**
