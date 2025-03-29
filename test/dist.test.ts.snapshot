@@ -1,0 +1,20 @@
+exports[`test cjs output 1`] = `
+
+> cjs@1.0.0 test
+> node index.cjs
+
+{
+  BabelTransformPlugin: [Function: BabelTransformPlugin],
+  default: [Function: BabelTransformPlugin]
+}
+
+`;
+
+exports[`test esm output 1`] = `
+
+> esm@1.0.0 test
+> node index.mjs
+
+[Function: BabelTransformPlugin]
+
+`;
