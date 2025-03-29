@@ -55,10 +55,6 @@ module.exports = {
 };
 ```
 
-## Relative
-
--   [babel-plugin-transform-fs-promises](https://github.com/axetroy/babel-plugin-transform-fs-promises)
-
 ## License
 
 The [Anti 996 License](LICENSE)
