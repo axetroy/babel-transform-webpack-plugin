@@ -45,9 +45,11 @@ module.exports = {
         // but it will slow down the build process
         process.env.NODE_ENV === "production"
             ? new BabelTransformPlugin({
-                  plugins: [
-                      // your babel plugins
-                  ],
+                  transformOptions: {
+                      plugins: [
+                          // your babel plugins
+                      ],
+                  },
               })
             : undefined,
         // ... other plugins
