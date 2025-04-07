@@ -39,21 +39,21 @@ const { BabelTransformPlugin } = require("babel-transform-webpack-plugin");
 
 /** @type {import('webpack').Configuration} */
 module.exports = {
-    plugins: [
-        // only use babel-transform-webpack-plugin in production for better performance
-        // you can use it in development if you want to debug the code
-        // but it will slow down the build process
-        process.env.NODE_ENV === "production"
-            ? new BabelTransformPlugin({
-                  transformOptions: {
-                      plugins: [
-                          // your babel plugins
-                      ],
-                  },
-              })
-            : undefined,
-        // ... other plugins
-    ].filter(Boolean),
+	plugins: [
+		// only use babel-transform-webpack-plugin in production for better performance
+		// you can use it in development if you want to debug the code
+		// but it will slow down the build process
+		process.env.NODE_ENV === "production"
+			? new BabelTransformPlugin({
+					transformOptions: {
+						plugins: [
+							// your babel plugins
+						],
+					},
+			  })
+			: undefined,
+		// ... other plugins
+	].filter(Boolean),
 };
 ```
 
