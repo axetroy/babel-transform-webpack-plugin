@@ -105,11 +105,13 @@ class BabelTransformPlugin {
     private async replaceContent(compiler: Compiler, source: string, filename: string): Promise<string> {
         const result = await transformAsync(source, {
             comments: compiler.options.mode !== "production",
-            ...(this.#options.transformOptions ?? {}),
+            configFile: false,
             babelrc: false,
-            ast: false,
-            filename,
             browserslistConfigFile: false,
+            cloneInputAst: false,
+            ...(this.#options.transformOptions ?? {}),
+            filename,
+            ast: false,
             ignore: undefined,
             include: undefined,
             exclude: undefined,
