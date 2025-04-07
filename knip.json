@@ -1,8 +1,4 @@
 {
-  "$schema": "https://unpkg.com/knip@5/schema.json",
-  "ignore": [
-    "rslib.config.ts",
-    "fixtures/**/*.(c|m)?js",
-    "src/p-map/**/*"
-  ]
+	"$schema": "https://unpkg.com/knip@5/schema.json",
+	"ignore": ["rslib.config.ts", "fixtures/**/*.(c|m)?js", "src/p-map/**/*"]
 }
