@@ -6,10 +6,7 @@ export interface BabelTransformPluginOptions {
      * The Babel configuration file to use.
      * It will not lookup .babelrc file in the project root.
      */
-    transformOptions?: Omit<
-        TransformOptions,
-        "root" | "babelrc" | "filename" | "ast" | "browserslistConfigFile" | "ignore" | "include" | "exclude"
-    >;
+    transformOptions?: Omit<TransformOptions, "filename" | "ast" | "cloneInputAst" | "ignore" | "include" | "exclude">;
     /**
      * Filter function to determine which files to transform.
      * @param fullPath - The fullPath of the file being transformed.
