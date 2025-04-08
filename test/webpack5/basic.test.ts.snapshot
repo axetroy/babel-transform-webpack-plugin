@@ -150,10 +150,10 @@ exports[`webpack5 - BabelTransformPlugin: build esm 1`] = `
 `;
 
 exports[`webpack5 - BabelTransformPlugin: diff result 1`] = `
-Index: index.mjs
+Index: bundled.js
 ===================================================================
---- index.mjs	
-+++ index.mjs	
+--- bundled.js	
++++ bundled.js	
 @@ -7,9 +7,9 @@
    var __webpack_modules__ = [
      /* 0 */
