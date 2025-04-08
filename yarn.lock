@@ -613,6 +613,11 @@
   dependencies:
     "@babel/types" "^7.20.7"
 
+"@types/diff@^7.0.2":
+  version "7.0.2"
+  resolved "https://registry.npmjs.org/@types/diff/-/diff-7.0.2.tgz#d638edebf3c97aa4962b6f1164a7921ab3de9f83"
+  integrity sha512-JSWRMozjFKsGlEjiiKajUjIJVKuKdE3oVy2DNtK+fUo8q82nhFZ2CPQwicAIkXrofahDXrWJ7mjelvZphMS98Q==
+
 "@types/eslint-scope@^3.7.7":
   version "3.7.7"
   resolved "https://registry.npmjs.org/@types/eslint-scope/-/eslint-scope-3.7.7.tgz#3108bd5f18b0cdb277c867b3dd449c9ed7079ac5"
@@ -1074,10 +1079,10 @@ atob@^2.1.2:
   resolved "https://registry.npmjs.org/atob/-/atob-2.1.2.tgz#6d9517eb9e030d2436666651e86bd9f6f13533c9"
   integrity sha512-Wm6ukoaOGJi/73p/cl2GvLjTI5JM1k/O14isD73YML8StrH/7/lRFgmg8nICZgD3bZZvjwCGxtMOD3wWNAu8cg==
 
-babel-plugin-transform-fs-promises@^0.1.4:
-  version "0.1.4"
-  resolved "https://registry.npmjs.org/babel-plugin-transform-fs-promises/-/babel-plugin-transform-fs-promises-0.1.4.tgz#8d8159472ee3827a05878f4409b8ce5cfbcf5a3b"
-  integrity sha512-hVqWj+L2rmHhoDU766Hj1EQsW6+74xEQwjntEbu63R/xlFfipzfPEl0fQ0q4d2EGH+X0iOp96qHHxLBlKFrMJA==
+babel-plugin-transform-fs-promises@^1.0.2:
+  version "1.0.2"
+  resolved "https://registry.npmjs.org/babel-plugin-transform-fs-promises/-/babel-plugin-transform-fs-promises-1.0.2.tgz#93f3a42b68cb108286abdfab524b71d08f234c4b"
+  integrity sha512-9vcg7lq989OUMfdpNYJ5SN1LwgrL3YKsnHFAqQQpmsJifVD4zJLyXIMhvbklu6NocfwaMh4eflEUdMuyzQVtDw==
 
 balanced-match@^1.0.0:
   version "1.0.2"
@@ -1623,6 +1628,11 @@ des.js@^1.0.0:
   dependencies:
     inherits "^2.0.1"
     minimalistic-assert "^1.0.0"
+
+diff@^7.0.0:
+  version "7.0.0"
+  resolved "https://registry.npmjs.org/diff/-/diff-7.0.0.tgz#3fb34d387cd76d803f6eebea67b921dab0182a9a"
+  integrity sha512-PJWHUb1RFevKCwaFA9RlG5tCd+FO5iRh9A8HEtkmBH2Li03iJriB6m6JIN4rGz3K3JLawI7/veA1xzRKP6ISBw==
 
 diffie-hellman@^5.0.3:
   version "5.0.3"

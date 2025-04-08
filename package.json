@@ -37,8 +37,10 @@
     "devDependencies": {
         "@rslib/core": "^0.6.0",
         "@types/babel__core": "^7.20.5",
+        "@types/diff": "^7.0.2",
         "@types/node": "^22.10.2",
-        "babel-plugin-transform-fs-promises": "^0.1.4",
+        "babel-plugin-transform-fs-promises": "^1.0.2",
+        "diff": "^7.0.0",
         "knip": "^5.46.3",
         "memfs": "^4.17.0",
         "memfs3": "npm:memfs@3",

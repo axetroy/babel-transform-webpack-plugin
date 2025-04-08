@@ -8,7 +8,7 @@ exports[`webpack5 - BabelTransformPlugin: build cjs 1`] = `
   /***/module => {
     "use strict";
 
-    module.exports = require("fs").promises;
+    module.exports = require("fs/promises");
 
     /***/
   }
@@ -71,7 +71,7 @@ exports[`webpack5 - BabelTransformPlugin: build esm 1`] = `
     /* 0 */
   , (/* 1 */
   /***/module => {
-    module.exports = require("fs").promises;
+    module.exports = require("fs/promises");
 
     /***/
   }
@@ -147,4 +147,23 @@ exports[`webpack5 - BabelTransformPlugin: build esm 1`] = `
 
   /******/
 })();
+`;
+
+exports[`webpack5 - BabelTransformPlugin: diff result 1`] = `
+Index: index.mjs
+===================================================================
+--- index.mjs	
++++ index.mjs	
+@@ -7,9 +7,9 @@
+   var __webpack_modules__ = [
+     /* 0 */
+   , (/* 1 */
+   /***/module => {
+-    module.exports = require("fs/promises");
++    module.exports = require("fs").promises;
+ 
+     /***/
+   }
+   /******/)];
+
 `;
