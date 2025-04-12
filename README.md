@@ -21,7 +21,7 @@ eg. you want to use `babel-plugin-transform-fs-promises` to transform the final 
 ## Installation
 
 ```bash
-npm install babel-transform-webpack-plugin --save
+npm install @babel/core babel-transform-webpack-plugin --save
 ```
 
 ## Usage
