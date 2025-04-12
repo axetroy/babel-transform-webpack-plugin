@@ -1,13 +1,23 @@
 import test from "node:test";
-import path from "node:path";
+import path, { dirname } from "node:path";
 import fs from "node:fs";
+import { fileURLToPath } from "node:url";
 import webpack, { Stats } from "webpack";
 import { createFsFromVolume, Volume } from "memfs";
 import { Union } from "unionfs";
 import { babelPluginTransformFsPromises } from "babel-plugin-transform-fs-promises";
 import { createTwoFilesPatch } from "diff";
+import outdent from "outdent";
 
 import BabelTransformPlugin from "../../src/index";
+
+const __filename = fileURLToPath(import.meta.url);
+const __dirname = path.dirname(__filename);
+
+function generateSnapshotFilePath(name: string) {
+	const basename = path.basename(__filename);
+	return path.join(__dirname, "snapshot", `${basename}__${name}__snapshot.md`);
+}
 
 async function compile(entry: string, options = {}) {
 	const compiler = webpack({
@@ -61,7 +71,13 @@ async function compile(entry: string, options = {}) {
 test("webpack5 - BabelTransformPlugin: build cjs", async (t) => {
 	const content = await compile("./index.cjs");
 
-	t.assert.snapshot(content, {
+	const markdown = outdent`
+		\`\`\`js
+		${content}
+		\`\`\`
+	`;
+
+	t.assert.fileSnapshot(markdown, generateSnapshotFilePath("build_cjs"), {
 		serializers: [(value) => value],
 	});
 });
@@ -69,7 +85,13 @@ test("webpack5 - BabelTransformPlugin: build cjs", async (t) => {
 test("webpack5 - BabelTransformPlugin: build esm", async (t) => {
 	const content = await compile("./index.mjs");
 
-	t.assert.snapshot(content, {
+	const markdown = outdent`
+		\`\`\`js
+		${content}
+		\`\`\`
+	`;
+
+	t.assert.fileSnapshot(markdown, generateSnapshotFilePath("build_esm"), {
 		serializers: [(value) => value],
 	});
 });
@@ -84,6 +106,7 @@ test("webpack5 - BabelTransformPlugin: diff result", async (t) => {
 			}),
 		],
 	});
+
 	const transformed = await compile("./index.mjs", {
 		plugins: [
 			new BabelTransformPlugin({
@@ -96,7 +119,13 @@ test("webpack5 - BabelTransformPlugin: diff result", async (t) => {
 
 	const diffOutput = createTwoFilesPatch("bundled.js", "bundled.js", original, transformed, "", "");
 
-	t.assert.snapshot(diffOutput, {
+	const markdownContent = outdent`
+		\`\`\`diff
+		${diffOutput}
+		\`\`\`
+	`;
+
+	t.assert.fileSnapshot(markdownContent, generateSnapshotFilePath("diff"), {
 		serializers: [(value) => value],
 	});
 });
