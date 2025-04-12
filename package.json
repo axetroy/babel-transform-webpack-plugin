@@ -67,9 +67,7 @@
         "url": "git+https://github.com/axetroy/babel-transform-webpack-plugin.git"
     },
     "peerDependencies": {
+        "@babel/core": "^7.0.0",
         "webpack": "^4.0.0 || ^5.0.0"
-    },
-    "dependencies": {
-        "@babel/core": "^7.26.10"
     }
 }
