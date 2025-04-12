@@ -1,6 +1,7 @@
 import test, { before } from "node:test";
 import path from "node:path";
 import { fileURLToPath } from "node:url";
+import { outdent } from "outdent";
 
 import { execSync } from "node:child_process";
 
@@ -18,7 +19,7 @@ before(() => {
 test("test esm output", (t) => {
 	const targetDir = path.join(rootDir, "fixtures", "esm");
 
-	execSync("yarn", { cwd: targetDir });
+	execSync("yarn", { cwd: targetDir, stdio: 'inherit' });
 
 	const output = execSync("npm run test --no-color", {
 		cwd: targetDir,
@@ -37,7 +38,7 @@ test("test esm output", (t) => {
 test("test cjs output", (t) => {
 	const targetDir = path.join(rootDir, "fixtures", "cjs");
 
-	execSync("yarn", { cwd: targetDir });
+	execSync("yarn", { cwd: targetDir, stdio: 'inherit' });
 
 	const output = execSync("npm run test --no-color", {
 		cwd: targetDir,

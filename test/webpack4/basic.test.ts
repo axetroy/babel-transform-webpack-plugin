@@ -66,7 +66,17 @@ async function compile(input: string, options = {}) {
 test("webpack4 - BabelTransformPlugin: build cjs", async (t) => {
 	const content = await compile("./index.cjs");
 
+	const filepath = path.resolve(__dirname, "fixtures", "index.cjs");
+
 	const markdown = outdent`
+		### Input
+
+		\`\`\`js
+		${fs.readFileSync(filepath, { encoding: "utf8" })}
+		\`\`\`
+
+		### Output
+
 		\`\`\`js
 		${content}
 		\`\`\`
@@ -80,7 +90,17 @@ test("webpack4 - BabelTransformPlugin: build cjs", async (t) => {
 test("webpack4 - BabelTransformPlugin: build esm", async (t) => {
 	const content = await compile("./index.mjs");
 
+	const filepath = path.resolve(__dirname, "fixtures", "index.mjs");
+
 	const markdown = outdent`
+		### Input
+
+		\`\`\`js
+		${fs.readFileSync(filepath, { encoding: "utf8" })}
+		\`\`\`
+
+		### Output
+
 		\`\`\`js
 		${content}
 		\`\`\`
