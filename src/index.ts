@@ -54,7 +54,7 @@ class BabelTransformPlugin {
 		compiler.hooks.compilation.tap("BabelTransformPlugin", (compilation: Compilation) => {
 			// Webpack 4 没有 processAssets，使用 optimizeChunkAssets
 			compilation.hooks.optimizeChunkAssets.tapPromise("BabelTransformPlugin", async (chunks) => {
-				const assets: Record<string, any> = {};
+				const assets: typeof compilation.assets = {};
 				chunks.forEach((chunk) => {
 					chunk.files.forEach((file) => {
 						assets[file] = compilation.assets[file];
@@ -68,18 +68,18 @@ class BabelTransformPlugin {
 	/**
 	 * 处理所有资源（公共方法）
 	 */
-	private async processAllAssets(compiler: Compiler, compilation: Compilation, assets: Record<string, any>): Promise<void> {
+	private async processAllAssets(compiler: Compiler, compilation: Compilation, assets: typeof compilation.assets): Promise<void> {
 		const javascriptFiles = Object.keys(assets).filter(
 			(filename) => filename.endsWith(".js") && (this.#options.filter ? this.#options.filter?.(filename) : true)
 		);
 
 		const process = async (filename: string) => {
 			const originalSource = assets[filename].source();
-			const sourceStr: string = typeof originalSource === "string" ? originalSource : originalSource.toString();
+			const sourceString = typeof originalSource === "string" ? originalSource : originalSource.toString();
 
-			const modifiedSource = await this.replaceContent(compiler, sourceStr, filename);
+			const modifiedSource = await this.replaceContent(compiler, sourceString, filename);
 
-			if (modifiedSource === sourceStr) {
+			if (modifiedSource === sourceString) {
 				return;
 			}
 
